@@ -43,7 +43,7 @@ BEGIN
 	SELECT * INTO _svc FROM service s WHERE s.service_id =
 		configure_endpoint.service_id;
 
-	svc_name := regexp_replace(_svc.service_name, '-', '_');
+	svc_name := regexp_replace(_svc.service_name, '-', '_', 'g');
 
 	IF NOT FOUND THEN
 		RAISE EXCEPTION 'Unknown Service id %', service_id;
